@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crystal Game</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<body>
+    <div class="header">
+        <h1>Crystal Collector!</h1>
+    </div>
+
+    <div class= "directions">
+        <h3> This is how you play Crystal Collector</h3>
+        <br>
+        <ol>
+
+            <li>A random number will be given to you to begin the game</li>
+            <li>There are four crystals that are here below</li>
+            <ul>
+                <li>By Clicking a crystal you will add a certain amount of points to the total score</li>
+                <li>You win if your total score matches the score given </li>
+                <li>The values of the crystal will be hidden until you click on a crystal</li>
+                <li> The values of the Crystals will change when the game is reset</li>
+            </ul>
+         </ol>
+        <div class ="targetScore">
+            <h2>Target Score:
+                <span id= "targetNumber"></span>
+            </h2>
+        	<div class="winsAndLosses">
+                    <h2>Wins:
+                        <span id= "numberWins"></span>
+                        <br>
+                        Losses: 
+                        <span id= "numberLosses"></span>
+                    </h2>
+                </div>
+            <div class="crystals">
+
+                <img src= "diamond.jpg" id ="jewelOne">
+                <img src="amethyst.jpg" id ="jewelTwo">
+                <img src="seedcrystal.jpg" id="jewelThree">
+                <img src="images.jpg" id="jewelFour">
+
+            </div>
+        
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    
+ <script>     
+///Random Number to Reach
+var targetNumber = Math.floor(Math.random()*120+15)
+
+//Wins,Losses,Total Variables
+
+var playerScore = 0;
+
+var wins = 0;
+
+var losses = 0;
+
+//Target Number Display
+$("#targetScore").text(targetNumber);
+
+/// Random Numbers for Jewels
+var crysOne = Math.floor(Math.random()*12+1);
+    console.log(crysOne)
+var crysTwo = Math.floor(Math.random()*12+1);
+    console.log(crysTwo)
+var crysThree = Math.floor(Math.random()*12+1);
+    console.log(crysThree)
+var crysFour = Math.floor(Math.random()*12+1);
+    console.log(crysFour)
+    playerScore=0;
+    $("#finalScore").text(playerScore);
+
+///
+function win(){
+    alert("Win!");
+    wins++;
+    $('#winsTotal').text(wins);
+
+function lose(){
+    alert ("Loser!");
+    losses++;
+    $('#lossTotal').text(losses);
+    reset()
+}
+///click functions
+$('#jewelOne').on("click", function(){
+    userTotal = userTotal + crysOne;
+    console.log("New playerScore =" + playerScore);
+    $('#finalScore').text(playerScore);
+    ///Conditions
+    if (playerScore == targetNumber){
+        win();
+    }
+    else if (playerScore > targetNumber){
+        lose();
+    }
+})
+$('#jewelTwo').on("click", function(){
+    userTotal = userTotal + crysTwo;
+    console.log("New playerScore =" + playerScore);
+    $('#finalScore').text(playerScore);
+    ///Conditions
+    if (playerScore == targetNumber){
+        win();
+    }
+    else if (playerScore > targetNumber){
+        lose();
+    }
+})
+$('#jewelThree').on("click", function(){
+    userTotal = userTotal + crysThree;
+    console.log("New playerScore =" + playerScore);
+    $('#finalScore').text(playerScore);
+    ///Conditions
+    if (playerScore == targetNumber){
+        win();
+    }
+    else if (playerScore > targetNumber){
+        lose();
+    }
+})
+$('#jewelFour').on("click", function(){
+    userTotal = userTotal + crysFour;
+    console.log("New playerScore =" + playerScore);
+    $('#finalScore').text(playerScore);
+    ///Conditions
+    if (playerScore == targetNumber){
+        win();
+    }
+    else if (playerScore > targetNumber){
+        lose();
+    }
+})
+
+}
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
